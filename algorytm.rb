@@ -7,7 +7,7 @@ class AssocativeScores
     i = 0
     until graph.empty?
       i += 1
-      break puts "Цикличность недоступна" if i > (graph.length*4)
+      break puts "Транзитивность недоступна" if i > (graph.length*100)
       keys = []
       graph.each do |key, value|
         if value.empty?
@@ -47,7 +47,7 @@ class AssocativeScores
     i = 0
     until graph.empty?
       i += 1
-      break puts "Цикличность недоступна" if i > (graph.length * 4)
+      break puts "Транзитивность недоступна" if i > (graph.length * 100)
       keys = []
       iteration_keys = []
       graph.each do |key, value|
