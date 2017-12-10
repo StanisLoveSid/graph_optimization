@@ -28,18 +28,22 @@ end
 
 def up_s
   graph = { 1 => [], 2 => [1], 3 => [1], 4 => [2,3], 5 => [3,6], 6 => [] }
-  history = []
   show = []
   i = 0
   until graph.empty?
     i += 1
-    break puts "Цикличность недоступна" if i > graph.length
+    break puts "Цикличность недоступна" if i > (graph.length * 4)
     keys = []
+    iteration_keys = []
     graph.each do |key, value|
       unless graph.values.flatten.include? key
-        history << key
         keys << key
-        graph.delete key
+        iteration_keys << key
+      end
+    end
+    graph.each do |key, value|
+      iteration_keys.each do |element|
+        graph.delete(key) if key == element
       end
     end
     show << keys
