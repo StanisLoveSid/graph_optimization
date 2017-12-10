@@ -1,4 +1,5 @@
 include Math
+require 'colorize'
 
 class AssocativeScores
   def down_s(graph)
@@ -7,7 +8,7 @@ class AssocativeScores
     i = 0
     until graph.empty?
       i += 1
-      break puts "Транзитивность недоступна" if i > (graph.length*100)
+      break puts "Транзитивность недоступна".red if i > (graph.length*100)
       keys = []
       graph.each do |key, value|
         if value.empty?
@@ -24,7 +25,7 @@ class AssocativeScores
       end
 
     end
-    puts "S с чертой внизу: #{show}"
+    puts "S с чертой внизу: ".green + "#{show}" 
   end
 
   def up_s
@@ -47,7 +48,7 @@ class AssocativeScores
     i = 0
     until graph.empty?
       i += 1
-      break puts "Транзитивность недоступна" if i > (graph.length * 100)
+      break puts "Транзитивность недоступна".red if i > (graph.length * 100)
       keys = []
       iteration_keys = []
       graph.each do |key, value|
@@ -63,7 +64,7 @@ class AssocativeScores
       end
       show << keys
     end
-    puts "S с чертой верху: #{show}"
+    puts "S с чертой верху: ".green + "#{show}"
     down_s(sent_graph)
   end
 
